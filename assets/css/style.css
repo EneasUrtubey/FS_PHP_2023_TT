@@ -1,3 +1,15 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css");
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+
+
 .bg-graynav {
     background-color: #353a40;
 }
@@ -6,51 +18,30 @@
     color: #29a744;
 }
 
-.h-carousel {
-    height: 700px;
+
+.btn-shadow {
+    box-shadow: 1px 1px 3px rgba(0,0,0,1);
+  }
+  
+.carousel-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.6);
 }
 
-.op-img {
-    opacity: .2;
-    filter: alpha(opacity=50);
-    background-color: rgba(0, 0, 0, 0.5);
-    transition: all 1s;
-    -webkit-transition: all 1s;
+
+body {
+    background-color: black;
+    color: white;
 }
 
-.tot-img {
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 600px;
-    width: 100%;
-    position: relative; 
+.navbar-toggler-icon {
+    background-color: white;
 }
-
-.img-1 {
-    background-image: url(../img/ba1.jpg);
-}
-
-.img-2 {
-    background-image: url(../img/ba2.jpg); 
-}
-
-.img-3{
-    background-image: url(../img/ba3.jpg); 
-}
-
-.grad-img{
-    position: absolute;
-    background-color: rgba(0,0,0,.5) ;
-    width: 100%;
-    height: 100%;
-}
-
-.grad-img div{
-    bottom: 10rem;
-    right: 8rem;
-    text-align: end;
-} 
 
 footer {
     background-color: #1d3a4a;
