@@ -100,35 +100,21 @@ myModal.addEventListener('shown.bs.modal', () => {
 
 
 
-function nameError() {
-    if (nombre.value.length < 3) {
-        document.getElementById("errorName").innerHTML = "Requisito necesario";
-    } else {
-        document.getElementById("errorName").innerHTML = " ¡Excelente! ";
+function verificar() {
+    var nombre = document.getElementById("name").value;
+    var apellido = document.getElementById("lastName").value;
+    if (nombre.length < 3 || apellido.length < 3) {
+      alert("Ingrese más de 3 caracteres en Nombre y Apellido");
+      return false;
     }
-}
-
-function lastNameError() {
-    if (apellido.value.length < 3) {
-        document.getElementById("errorLastName").innerHTML = "Requisito necesario";
-    } else {
-        document.getElementById("errorLastName").innerHTML = " ¡Excelente! ";
+    var email = document.getElementById("mail").value;
+    if (email.length === 0) {
+      alert("Ingrese su correo electrónico");
+      return false;
     }
-}
-
-function emailError() {
-    const email = document.getElementById("email");
-    const emailRegex = /^\S+@\S+\.\S+$/;
-    if (!emailRegex.test(email.value)) {
-        document.getElementById("errorEmail").innerHTML = "Ingrese un correo electrónico válido";
-    } else {
-        document.getElementById("errorEmail").innerHTML = " ¡Excelente! ";
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      alert("Ingrese un correo electrónico válido");
+      return false;
     }
-}
-
-
-
-
-buyBtn.addEventListener("click", nameError);
-buyBtn.addEventListener("click", lastNameError);
-buyBtn.addEventListener("click", emailError);
+  }
