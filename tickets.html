@@ -41,18 +41,18 @@
                 <div class="collapse navbar-collapse" justify-content-end id="navbar02">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0 end-0 pe-3 p-2">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#section1"
+                            <a class="nav-link active" aria-current="page" href="index.html#section1"
                                 data-bs-target="#section1">La
                                 conferencia</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#oradores">Los oradores</a>
+                            <a class="nav-link" href="index.html#oradores">Los oradores</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#baires">El lugar y la fecha</a>
+                            <a class="nav-link" href="index.html#baires">El lugar y la fecha</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#conviertete">Conviértete en orador</a>
+                            <a class="nav-link" href="index.html#conviertete">Conviértete en orador</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-success" href="tickets.html">Comprar tickets</a>
@@ -137,17 +137,17 @@
         <div class="container mt-1">
             <div class="row-cols-lg-4">
                 <label for="nombre" class="form-label">Nombre:</label>
-                <input id="nombre" name="nombre" type="text" class="form-control">
+                <input id="nombre" name="nombre" type="text" class="form-control" required="">
                 <p id="nameError" class="oculto"></p>
             </div>
             <div class="row-cols-lg-4">
                 <label for="apellido" class="form-label">Apellido:</label>
-                <input type="text" class="form-control" id="apellido">
+                <input type="text" class="form-control" id="apellido" required="">
                 <p id="lastNameError" class="oculto"></p>
             </div>
             <div class="row-cols-lg-4">
                 <label for="email" class="form-label">Email:</label>
-                <input type="email" class="form-control" id="correo">
+                <input type="email" class="form-control" id="correo" required="">
                 <p id="emailError"></p>
             </div>
         </div>
@@ -163,8 +163,10 @@
                             </h1>
                         </ul>
                         <div class="d-flex justify-content-evenly gap-2 mb-3">
-                            <button class="btn btn-success" type="reset" id="btnBorrar">BORRAR</button>
-                            <button class="btn btn-success" type="submit" id="btnComprar">COMPRAR</button>
+                            <button class="btn btn-success" id="reset-cart">BORRAR CARRITO</button>
+
+                            <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                id="btnComprar">COMPRAR</button>
                         </div>
                     </div>
                 </div>
@@ -203,138 +205,45 @@
 
 
 
-    <script>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Su compra es:</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
 
-        const addToCart1Button = document.getElementById('add-to-cart-1');
-        const addToCart2Button = document.getElementById('add-to-cart-2');
-        const addToCart3Button = document.getElementById('add-to-cart-3');
-        const addToCart4Button = document.getElementById('add-to-cart-4');
-        const cart = document.getElementById('cart');
-        const totalText = document.getElementById('total');
-        const nameForm = document.getElementById('nombre');
-        const lastNameForm = document.getElementById('apellido');
-        const emailForm = document.getElementById('correo');
-        const buyBtn = document.getElementById('btnComprar');
+                    <ul class="list-group list-group-flush align-items-center">
+                        <ul id="cart"></ul>
+                        <h1>
+                            <p>Total: $<span id="total">0.00</span></p>
+                        </h1>
+                    </ul>
 
-
-        let total = 0.00;
-
-        addToCart1Button.addEventListener('click', () => {
-            const category = document.getElementById('category-1');
-            const quantity = document.getElementById('quantity-1');
-            const price = parseFloat(addToCart1Button.getAttribute('data-price'));
-
-            category.textContent = 'Categoría 1';
-            quantity.textContent = '1';
-
-            const listItem = document.createElement('li');
-            listItem.textContent = `GENERAL - $${price}`;
-            cart.appendChild(listItem);
-
-            total += price;
-            totalText.textContent = total.toFixed(2);
-        });
-
-        addToCart2Button.addEventListener('click', () => {
-            const category = document.getElementById('category-2');
-            const quantity = document.getElementById('quantity-2');
-            const price = parseFloat(addToCart2Button.getAttribute('data-price'));
-
-            category.textContent = 'Categoría 2';
-            quantity.textContent = '2';
-
-            const listItem = document.createElement('li');
-            listItem.textContent = `ESTUDIANTE - $${price}`;
-            cart.appendChild(listItem);
-
-            total += price;
-            totalText.textContent = total.toFixed(2);
-        });
-
-        addToCart3Button.addEventListener('click', () => {
-            const category = document.getElementById('category-3');
-            const quantity = document.getElementById('quantity-3');
-            const price = parseFloat(addToCart3Button.getAttribute('data-price'));
-
-            category.textContent = 'Categoría 3';
-            quantity.textContent = '2';
-
-            const listItem = document.createElement('li');
-            listItem.textContent = `TRAINEE - $${price}`;
-            cart.appendChild(listItem);
-
-            total += price;
-            totalText.textContent = total.toFixed(2);
-        });
-
-        addToCart4Button.addEventListener('click', () => {
-            const category = document.getElementById('category-4');
-            const quantity = document.getElementById('quantity-4');
-            const price = parseFloat(addToCart4Button.getAttribute('data-price'));
-
-            category.textContent = 'Categoría 4';
-            quantity.textContent = '4';
-
-            const listItem = document.createElement('li');
-            listItem.textContent = `JUNIOR - $${price}`;
-            cart.appendChild(listItem);
-
-            total += price;
-            totalText.textContent = total.toFixed(2);
-        });
-
-       
-        // function nameError() {
-        //     if (nombre.value.length < 3) {
-        //         document.getElementById("errorName").innerHTML = "Requisito necesario";
-        //     } else {
-        //         document.getElementById("errorName").innerHTML = " ¡Excelente! ";
-        //     }
-        // }
-
-        // function lastNameError() {
-        //     if (apellido.value.length < 3) {
-        //         document.getElementById("errorLastName").innerHTML = "Requisito necesario";
-        //     } else {
-        //         document.getElementById("errorLastName").innerHTML = " ¡Excelente! ";
-        //     }
-        // }
-
-        // function emailError() {
-        //     const email = document.getElementById("email");
-        //     const emailRegex = /^\S+@\S+\.\S+$/;
-        //     if (!emailRegex.test(email.value)) {
-        //         document.getElementById("errorEmail").innerHTML = "Ingrese un correo electrónico válido";
-        //     } else {
-        //         document.getElementById("errorEmail").innerHTML = " ¡Excelente! ";
-        //     }
-        // }
-
-        
-        // const buyBtn = document.getElementById("buyBtn");
-
-        // buyBtn.addEventListener("click", nameError);
-        // buyBtn.addEventListener("click", lastNameError);
-        // buyBtn.addEventListener("click", emailError);
-           
-
-       
-        
-
-    </script>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CERRAR</button>
+                    <button type="button" class="btn btn-success">FINALIZAR COMPRA</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 
 
 
-
-
+    <script src="assets/js/carrito.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
 
-    <!-- FOOTER -->
+    <script src="assets/js/jquery-3.4.1.min.js"></script> <!-- POPPER-->
+
+    <script src="assets/js/popper.min.js"></script>
 
 </body>
 
